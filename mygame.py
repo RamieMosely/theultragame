@@ -5,10 +5,19 @@ from sys import exit
 pygame.init()
 screen = pygame.display.set_mode((800,400))
 pygame.display.set_caption('ULTRA')
+
+#Control framerate for all computer types
 clock = pygame.time.Clock()
 
-#Create a surface and import image
-testSurface = pygame.image.load('graphics/Sky.png')
+#Create font
+testFont = pygame.font.Font('font/Pixeltype.ttf', 50)
+
+#Create sky and ground surface and text surface
+skySurface = pygame.image.load('graphics/Sky.png')
+groundSurface = pygame.image.load('graphics/ground.png')
+textSurface = testFont.render('SCORE', False, 'blue')
+
+snailSurface = pygame.image.load('graphics/snail/snail1.png')
 
 
 
@@ -20,8 +29,12 @@ while True:
             pygame.quit()
             exit()
 
-    screen.blit(testSurface,(200,100))
+    #Load sky and ground surface and text surface in game
+    screen.blit(skySurface,(0,0))
+    screen.blit(groundSurface,(0,300))
+    screen.blit(textSurface, (10,10))
+    screen.blit(snailSurface,(600,250))
 
-    #draw all our elements update everything
+    #Draw all our elements update everything
     pygame.display.update()
     clock.tick(60)
